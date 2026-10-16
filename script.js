@@ -35,5 +35,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    // --- Логика бургер-меню ---
+    const burgerBtn = document.getElementById('burgerBtn');
+    const navWrapper = document.getElementById('navWrapper');
+
+    if (burgerBtn && navWrapper) {
+        // Открытие/закрытие меню
+        burgerBtn.addEventListener('click', () => {
+            burgerBtn.classList.toggle('active');
+            navWrapper.classList.toggle('open');
+        });
+
+        // Закрытие меню при клике на любую ссылку внутри
+        navWrapper.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                burgerBtn.classList.remove('active');
+                navWrapper.classList.remove('open');
+            });
+        });
+
+        // Закрытие меню при клике вне его
+        document.addEventListener('click', (event) => {
+            const isClickInsideMenu = navWrapper.contains(event.target);
+            const isClickOnBurger = burgerBtn.contains(event.target);
+
+            if (!isClickInsideMenu && !isClickOnBurger && navWrapper.classList.contains('open')) {
+                burgerBtn.classList.remove('active');
+                navWrapper.classList.remove('open');
+            }
+        });
+    }
 
 });
