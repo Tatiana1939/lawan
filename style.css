@@ -12,7 +12,10 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Шапка --- */
+/* ============================== */
+/*            ШАПКА               */
+/* ============================== */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -21,7 +24,7 @@ header {
     max-width: 1400px;
     margin: 0 auto;
     background: #fff;
-    position: relative; /* Для позиционирования меню на мобильных */
+    position: relative;
 }
 
 /* Обертка для nav + actions */
@@ -55,6 +58,7 @@ header {
     border-radius: 2px;
     transition: all 0.3s ease;
 }
+
 /* Анимация бургера в крестик */
 .burger-btn.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
@@ -77,17 +81,20 @@ header {
     cursor: pointer;
 }
 
-/* Логотип (иконка) */
 .logo-icon {
-    font-size: 1.1em;
-    line-height: 1;
+    width: 24px;
+    height: 24px;
     position: relative;
-    top: -2px; /* поднимаем на 2px, можно менять значение */
+    top: -2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo-icon svg {
     width: 100%;
     height: 100%;
+    display: block;
 }
 
 /* Навигация */
@@ -113,7 +120,6 @@ nav a:hover {
     color: #555;
 }
 
-/* Выпадающий список (стрелочка) */
 .arrow-down {
     width: 10px;
     height: 10px;
@@ -147,12 +153,12 @@ nav a:hover {
 
 .btn-login {
     text-decoration: none;
-    color: #2563eb; /* Синий цвет */
+    color: #2563eb;
     font-weight: 500;
     font-size: 15px;
     padding: 8px 16px;
     border: 1px solid #dbeafe;
-    border-radius: 8px; /* Сильное скругление */
+    border-radius: 8px;
     background-color: #fff;
     transition: all 0.2s;
 }
@@ -176,7 +182,20 @@ nav a:hover {
     background-color: #3266d9;
 }
 
-/* --- Главный блок (Hero) --- */
+/* Фокус для кнопок (доступность) */
+.btn-login:focus-visible,
+.btn-register:focus-visible,
+.feature-item:focus-visible,
+.burger-btn:focus-visible,
+.icon-btn:focus-visible {
+    outline: 2px solid #407bff;
+    outline-offset: 2px;
+}
+
+/* ============================== */
+/*           ГЛАВНЫЙ БЛОК         */
+/* ============================== */
+
 .hero {
     display: flex;
     flex-direction: column;
@@ -189,59 +208,57 @@ nav a:hover {
 h1 {
     font-size: 64px;
     line-height: 1.1;
-    font-weight: 800; /* Очень жирный */
+    font-weight: 800;
     color: #0f0f0f;
     letter-spacing: -1.5px;
     max-width: 900px;
     margin-bottom: 60px;
 }
 
-/* --- Плашка с кнопками (Серый фон) --- */
+/* ============================== */
+/*   ПЛАШКА С КНОПКАМИ (TABS)     */
+/* ============================== */
+
 .feature-pill {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #eef0f3; /* Серый фон для всей плашки */
-    padding: 6px; /* Отступ от краев плашки до кнопок */
-    border-radius: 16px; /* Скругление самой плашки */
-    gap: 4px; /* Расстояние между кнопками */
+    background-color: #eef0f3;
+    padding: 6px;
+    border-radius: 16px;
+    gap: 4px;
     width: fit-content;
     margin: 0 auto 40px auto;
-    /* Убираем тень у самой плашки, чтобы было чище */
 }
 
-/* --- Кнопки (по умолчанию прозрачные) --- */
 .feature-item {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 12px 24px;
-    border-radius: 12px; /* Скругление самой кнопки */
+    border-radius: 12px;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 600;
-    color: #4b5563; /* Серый цвет текста для неактивной кнопки */
+    color: #4b5563;
     cursor: pointer;
     transition: all 0.25s ease;
-    background: transparent; /* Фон прозрачный, виден серый цвет плашки */
+    background: transparent;
     border: none;
-    white-space: nowrap; /* Чтобы текст не переносился */
+    white-space: nowrap;
 }
 
-/* Эффект при наведении на неактивную кнопку */
 .feature-item:hover:not(.active) {
-    color: #111827; /* Темнеет текст при наведении */
-    background-color: rgba(255, 255, 255, 0.5); /* Легкая подсветка */
+    color: #111827;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
-/* --- АКТИВНАЯ КНОПКА (Белая таблетка поверх серого) --- */
 .feature-item.active {
-    background-color: #ffffff; /* Белый фон */
-    color: #111827; /* Темный текст */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Легкая тень, чтобы выделить */
+    background-color: #ffffff;
+    color: #111827;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* --- Иконки (остаются без изменений) --- */
 .feature-icon-wrapper {
     display: flex;
     align-items: center;
@@ -249,6 +266,7 @@ h1 {
     width: 32px;
     height: 32px;
     border-radius: 8px;
+    flex-shrink: 0;
 }
 
 .bg-blue { background-color: #eef2ff; color: #4f46e5; }
@@ -259,99 +277,38 @@ h1 {
     height: 18px;
 }
 
+/* ============================== */
+/*          КОНТЕЙНЕР ЧАТОВ       */
+/* ============================== */
 
-
-/* --- Подвал (Footer) --- */
-.site-footer {
-    background-color: #f8f9fa; /* Светло-серый фон как на скрине */
-    padding: 80px 40px 100px;
-    color: #4b5563; /* Основной цвет текста (темно-серый) */
-    font-size: 18px;
+.chats-wrapper {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
 }
 
-.footer-container {
-    max-width: 1400px;
-    margin: 0 auto;
+/* Скрываем все чаты по умолчанию */
+.chat-view {
+    display: none;
+}
+
+/* Показываем только чат с классом active */
+.chat-view.active {
     display: flex;
-    gap: 200px; /* Расстояние между колонками */
+    justify-content: center;
 }
 
-.footer-column {
-    display: flex;
-    flex-direction: column;
-}
+/* ============================== */
+/*          МАКЕТ МЕССЕНДЖЕРА     */
+/* ============================== */
 
-/* Заголовки */
-.footer-column h4 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #374151; /* Чуть темнее основного текста */
-    margin-bottom: 24px;
-}
-
-/* Список ссылок (Левая колонка) */
-.footer-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 18px; /* Расстояние между ссылками */
-}
-
-.footer-links a {
-    text-decoration: none;
-    color: #4b5563;
-    transition: color 0.2s;
-}
-
-.footer-links a:hover {
-    color: #111;
-}
-
-/* Группы контактов (Правая колонка) */
-.contact-group {
-    margin-bottom: 28px; /* Расстояние между блоками контактов */
-}
-
-.contact-group h4 {
-    margin-bottom: 8px; /* У заголовков контактов отступ меньше */
-}
-
-.contact-group a {
-    text-decoration: none;
-    color: #4b5563;
-    font-weight: 400;
-    transition: color 0.2s;
-}
-
-.contact-group a:hover {
-    color: #111;
-}
-
-/* Адаптив для планшетов и телефонов */
-@media (max-width: 900px) {
-    .footer-container {
-        gap: 80px;
-    }
-}
-
-@media (max-width: 768px) {
-    .site-footer {
-        padding: 50px 20px;
-    }
-    .footer-container {
-        flex-direction: column;
-        gap: 50px;
-    }
-}
-
-
-/* --- Детализированный макет мессенджера --- */
 .messenger-mockup {
     width: 100%;
-    max-width: 420px; /* Ширина как у мобильного телефона */
+    max-width: 420px;
     background: #ffffff;
     border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); /* Глубокая мягкая тень */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     border: 1px solid #e5e7eb;
     overflow: hidden;
     font-family: 'Inter', sans-serif;
@@ -360,7 +317,7 @@ h1 {
     margin: 20px auto;
 }
 
-/* 1. Шапка */
+/* --- Шапка чата --- */
 .messenger-header {
     display: flex;
     justify-content: space-between;
@@ -383,6 +340,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .ai-avatar {
@@ -390,6 +348,15 @@ h1 {
     color: white;
 }
 .ai-avatar svg {
+    width: 20px;
+    height: 20px;
+}
+
+.lawyer-avatar {
+    background-color: #e5e7eb;
+    color: #4b5563;
+}
+.lawyer-avatar svg {
     width: 20px;
     height: 20px;
 }
@@ -407,8 +374,19 @@ h1 {
 
 .user-status {
     font-size: 12px;
-    color: #10b981; /* Зеленый статус */
+    color: #10b981;
     font-weight: 500;
+}
+
+.user-status.offline {
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+.messenger-header .header-actions {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .icon-dots {
@@ -416,15 +394,20 @@ h1 {
     font-size: 20px;
     cursor: pointer;
     letter-spacing: 2px;
+    transition: color 0.2s;
 }
 
-/* 2. Тело чата */
+.icon-dots:hover {
+    color: #4b5563;
+}
+
+/* --- Тело чата --- */
 .messenger-body {
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    background: #f9fafb; /* Светло-серый фон как в Telegram/WhatsApp */
+    background: #f9fafb;
     min-height: 300px;
 }
 
@@ -432,7 +415,7 @@ h1 {
     text-align: center;
     font-size: 12px;
     color: #6b7280;
-    background: rgba(0,0,0,0.05);
+    background: rgba(0, 0, 0, 0.05);
     padding: 4px 12px;
     border-radius: 12px;
     align-self: center;
@@ -454,17 +437,15 @@ h1 {
     font-size: 14px;
     line-height: 1.4;
     position: relative;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* Стиль исходящего */
 .outgoing .message-bubble {
     background-color: #407bff;
     color: #ffffff;
     border-bottom-right-radius: 2px;
 }
 
-/* Стиль входящего */
 .incoming .message-bubble {
     background-color: #ffffff;
     color: #1f2937;
@@ -473,7 +454,8 @@ h1 {
 
 .message-text {
     margin-bottom: 4px;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .message-meta {
@@ -494,7 +476,7 @@ h1 {
     display: block;
 }
 
-/* Индикатор набора текста (Три точки) */
+/* --- Индикатор набора текста --- */
 .typing-indicator {
     display: flex;
     align-items: center;
@@ -522,205 +504,7 @@ h1 {
     40% { transform: scale(1); }
 }
 
-/* 3. Строка ввода */
-.messenger-input {
-    display: flex;
-    align-items: center;
-    padding: 10px 16px;
-    background: #ffffff;
-    border-top: 1px solid #f3f4f6;
-    gap: 10px;
-}
-
-.messenger-input input {
-    flex-grow: 1;
-    border: none;
-    background: #f3f4f6;
-    padding: 10px 16px;
-    border-radius: 20px;
-    font-size: 14px;
-    outline: none;
-    font-family: 'Inter', sans-serif;
-    color: #4b5563;
-}
-
-.messenger-input input::placeholder {
-    color: #9ca3af;
-}
-
-.attach-btn, .send-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    color: #9ca3af;
-    transition: color 0.2s;
-}
-
-.attach-btn:hover { color: #4b5563; }
-.send-btn { color: #407bff; } /* Кнопка отправки синяя */
-.send-btn:hover { color: #2563eb; }
-
-.attach-btn svg, .send-btn svg {
-    width: 20px;
-    height: 20px;
-}
-
-/* --- Макет мессенджера (Адвокат-Коллега) --- */
-.messenger-mockup {
-    width: 100%;
-    max-width: 420px;
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e5e7eb;
-    overflow: hidden;
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    flex-direction: column;
-    margin: 20px auto;
-}
-
-/* 1. Шапка */
-.messenger-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 16px;
-    background: #ffffff;
-    border-bottom: 1px solid #f3f4f6;
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Аватарка коллеги (Серая/Нейтральная) */
-.lawyer-avatar {
-    background-color: #e5e7eb;
-    color: #4b5563;
-}
-.lawyer-avatar svg {
-    width: 20px;
-    height: 20px;
-}
-
-.user-details {
-    display: flex;
-    flex-direction: column;
-}
-
-.user-name {
-    font-weight: 600;
-    font-size: 15px;
-    color: #111827;
-}
-
-/* Статус "Был в сети" (Серый) */
-.user-status.offline {
-    font-size: 12px;
-    color: #9ca3af; 
-    font-weight: 400;
-}
-
-.icon-dots {
-    color: #9ca3af;
-    font-size: 20px;
-    cursor: pointer;
-    letter-spacing: 2px;
-}
-
-/* 2. Тело чата */
-.messenger-body {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    background: #f9fafb; 
-    min-height: 300px;
-}
-
-.chat-date {
-    text-align: center;
-    font-size: 12px;
-    color: #6b7280;
-    background: rgba(0,0,0,0.05);
-    padding: 4px 12px;
-    border-radius: 12px;
-    align-self: center;
-    margin-bottom: 8px;
-}
-
-.message-row {
-    display: flex;
-    width: 100%;
-}
-
-.message-row.outgoing { justify-content: flex-end; }
-.message-row.incoming { justify-content: flex-start; }
-
-.message-bubble {
-    max-width: 85%;
-    padding: 8px 12px 6px 12px;
-    border-radius: 12px;
-    font-size: 14px;
-    line-height: 1.4;
-    position: relative;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-
-/* Стиль исходящего (Наши сообщения) */
-.outgoing .message-bubble {
-    background-color: #407bff;
-    color: #ffffff;
-    border-bottom-right-radius: 2px;
-}
-
-/* Стиль входящего (Сообщения коллеги) */
-.incoming .message-bubble {
-    background-color: #ffffff;
-    color: #1f2937;
-    border-bottom-left-radius: 2px;
-}
-
-.message-text {
-    margin-bottom: 4px;
-    word-wrap: break-word;
-}
-
-.message-meta {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 4px;
-    font-size: 11px;
-    margin-top: 2px;
-}
-
-.outgoing .message-meta { color: rgba(255, 255, 255, 0.8); }
-.incoming .message-meta { color: #9ca3af; }
-
-.message-status svg {
-    width: 14px;
-    height: 14px;
-    display: block;
-}
-
-/* 3. Стили для вложенного файла */
+/* --- Вложенный файл --- */
 .file-bubble {
     padding: 12px 14px 8px 14px;
 }
@@ -741,6 +525,7 @@ h1 {
     align-items: center;
     justify-content: center;
     color: #407bff;
+    flex-shrink: 0;
 }
 
 .file-icon svg {
@@ -764,8 +549,7 @@ h1 {
     color: #6b7280;
 }
 
-
-/* 4. Строка ввода */
+/* --- Строка ввода --- */
 .messenger-input {
     display: flex;
     align-items: center;
@@ -777,6 +561,7 @@ h1 {
 
 .messenger-input input {
     flex-grow: 1;
+    min-width: 0;
     border: none;
     background: #f3f4f6;
     padding: 10px 16px;
@@ -791,7 +576,8 @@ h1 {
     color: #9ca3af;
 }
 
-.attach-btn, .send-btn {
+.attach-btn,
+.send-btn {
     background: none;
     border: none;
     cursor: pointer;
@@ -801,30 +587,88 @@ h1 {
     padding: 4px;
     color: #9ca3af;
     transition: color 0.2s;
+    flex-shrink: 0;
 }
 
 .attach-btn:hover { color: #4b5563; }
 .send-btn { color: #407bff; }
 .send-btn:hover { color: #2563eb; }
 
-.attach-btn svg, .send-btn svg {
+.attach-btn svg,
+.send-btn svg {
     width: 20px;
     height: 20px;
 }
 
-/* Скрываем все чаты по умолчанию */
-.chat-view {
-    display: none;
+/* ============================== */
+/*            ПОДВАЛ              */
+/* ============================== */
+
+.site-footer {
+    background-color: #f8f9fa;
+    padding: 80px 40px 100px;
+    color: #4b5563;
+    font-size: 18px;
+    margin-top: 60px;
 }
 
-/* Показываем только чат с классом active */
-.chat-view.active {
-    display: flex; /* или block */
-    justify-content: center;
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 200px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-column h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 24px;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #4b5563;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #111;
+}
+
+.contact-group {
+    margin-bottom: 28px;
+}
+
+.contact-group h4 {
+    margin-bottom: 8px;
+}
+
+.contact-group a {
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 400;
+    transition: color 0.2s;
+}
+
+.contact-group a:hover {
+    color: #111;
 }
 
 /* ============================== */
-/*        АДАПТИВ                 */
+/*            АДАПТИВ             */
 /* ============================== */
 
 /* Планшеты и небольшие ноутбуки */
@@ -832,34 +676,33 @@ h1 {
     header { padding: 15px 20px; }
     nav ul { gap: 20px; }
     h1 { font-size: 44px; }
+    .footer-container { gap: 80px; }
 }
 
-/* Мобильные устройства (основной адаптив) */
+/* Мобильные устройства */
 @media (max-width: 768px) {
 
-    /* --- Шапка --- */
+    /* --- Шапка сайта --- */
     header {
         padding: 15px 20px;
     }
 
-    /* Показываем бургер */
     .burger-btn {
         display: flex;
     }
 
-    /* Скрываем меню по умолчанию */
     .nav-wrapper {
-        position: fixed; /* Фиксируем на весь экран */
+        position: fixed;
         top: 0;
-        right: -100%; /* Уезжает за правый край */
-        width: 80%; /* Ширина панели меню */
+        right: -100%;
+        width: 80%;
         max-width: 320px;
         height: 100vh;
         background: #ffffff;
-        flex-direction: column; /* Элементы в столбик */
+        flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        padding: 80px 30px 30px 30px; /* Отступ сверху под бургер */
+        padding: 80px 30px 30px 30px;
         box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
         transition: right 0.4s ease;
         z-index: 1000;
@@ -867,26 +710,25 @@ h1 {
         overflow-y: auto;
     }
 
-    /* Когда меню открыто — оно выезжает */
     .nav-wrapper.open {
         right: 0;
     }
 
-    /* Меню в столбик */
     nav {
         width: 100%;
     }
+
     nav ul {
         flex-direction: column;
         align-items: flex-start;
         gap: 24px;
         width: 100%;
     }
+
     nav a {
-        font-size: 18px; /* Крупнее для удобства на тапе */
+        font-size: 18px;
     }
 
-    /* Кнопки действий в столбик */
     .header-actions {
         flex-direction: column;
         align-items: stretch;
@@ -896,11 +738,14 @@ h1 {
         padding-top: 20px;
         border-top: 1px solid #eee;
     }
-    .btn-login, .btn-register {
+
+    .btn-login,
+    .btn-register {
         text-align: center;
         padding: 12px 16px;
         font-size: 16px;
     }
+
     .icon-btn {
         align-self: flex-start;
         padding: 8px;
@@ -923,7 +768,7 @@ h1 {
 
     /* --- Кнопки (feature-pill) --- */
     .feature-pill {
-        flex-direction: column; /* Кнопки в столбик */
+        flex-direction: column;
         width: 100%;
         max-width: 400px;
         background: #eef0f3;
@@ -938,56 +783,15 @@ h1 {
         justify-content: flex-start;
         padding: 12px 16px;
         font-size: 14px;
-        white-space: normal; /* Разрешаем перенос текста */
+        white-space: normal;
         text-align: left;
     }
 
     /* --- Чат --- */
-    /* === Шапка чата === */
-    .messenger-header {
-        padding: 12px 14px;
-        flex-wrap: nowrap; /* Запрещаем перенос на вторую строку */
-        gap: 10px;
-    }
-
-    /* Аватарка не должна сжиматься */
-    .avatar {
-        flex-shrink: 0; /* Запрещаем сжатие */
-        width: 36px;
-        height: 36px;
-    }
-
-    /* Блок с именем занимает всё свободное место */
-    .user-info {
-        flex: 1;
-        min-width: 0; /* Важно! Позволяет тексту обрезаться, а не вылезать */
-        overflow: hidden;
-    }
-    /* Имя и статус обрезаются с "…" если не влезают */
-    .user-name,
-    .user-status {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    /* Троеточие — фиксированный размер, не сжимается */
-    .icon-dots {
-        flex-shrink: 0;
-        font-size: 18px;
-        letter-spacing: 1px;
-        padding: 0 4px;
-    }
-
-    /* Или если у вас иконка, а не текст: */
-    .header-actions {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-    }
     .messenger-mockup {
         max-width: 100%;
         border-radius: 12px;
+        margin: 10px auto;
     }
 
     .messenger-body {
@@ -1008,11 +812,53 @@ h1 {
         font-size: 13px;
         padding: 8px 12px;
     }
+
+    /* --- Шапка чата на мобильных (чтобы троеточие не съезжало) --- */
+    .messenger-header {
+        padding: 12px 14px;
+        gap: 10px;
+    }
+
+    .user-info {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .user-name,
+    .user-status {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .messenger-header .header-actions {
+        flex-shrink: 0;
+        margin-left: 8px;
+    }
+
+    .icon-dots {
+        font-size: 18px;
+        letter-spacing: 1px;
+        padding: 0 2px;
+    }
+
+    /* --- Подвал --- */
+    .site-footer {
+        padding: 50px 20px;
+        margin-top: 40px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 50px;
+    }
 }
 
-/* Очень маленькие экраны (iPhone SE и подобные) */
+/* Очень маленькие экраны */
 @media (max-width: 380px) {
     h1 { font-size: 24px; }
     .feature-item { font-size: 13px; padding: 10px 12px; }
     .message-bubble { font-size: 12px; }
+    .icon-dots { font-size: 16px; }
 }
