@@ -694,7 +694,7 @@ h1 {
     .nav-wrapper {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: -110% !important;
         width: 80%;
         max-width: 320px;
         height: 100vh;
@@ -736,6 +736,7 @@ h1 {
         width: 100%;
         margin-top: 20px;
         padding-top: 20px;
+        border-top: 1px solid #eee;
         
     }
 
