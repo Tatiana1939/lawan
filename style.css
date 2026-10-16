@@ -814,6 +814,11 @@ h1 {
         font-size: 13px;
         padding: 8px 12px;
     }
+    .messenger-header .header-actions {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
 
     
     .site-footer {
