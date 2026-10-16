@@ -813,61 +813,12 @@ h1 {
         padding: 8px 12px;
     }
 
-    .messenger-header {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 12px 14px !important;
-        gap: 10px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    .messenger-header .user-info {
-        flex: 1 1 auto !important;
-        min-width: 0 !important;
-        max-width: calc(100% - 40px) !important; /* Оставляем место троеточию */
-        overflow: hidden !important;
-        display: flex !important;
-        align-items: center !important;
-    }
-
-    .messenger-header .user-details {
-        min-width: 0 !important;
-        overflow: hidden !important;
-    }
-    .messenger-header .user-name,
-    .messenger-header .user-status {
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        display: block !important;
-    }
-
     .messenger-header .header-actions {
-        flex: 0 0 auto !important;
-        width: auto !important;
-        max-width: 40px !important; /* Троеточие не шире 40px */
-        display: flex !important;
-        align-items: center !important;
-        justify-content: flex-end !important;
-        margin-left: auto !important;
-        padding: 0 !important;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
     }
-    .messenger-header .icon-dots {
-        display: inline-block !important;
-        width: auto !important;
-        font-size: 18px !important;
-        letter-spacing: 1px !important;
-        padding: 0 !important;
-        line-height: 1 !important;
-        flex: 0 0 auto !important;
-        white-space: nowrap !important;
-    }
-
-
-    /* --- Подвал --- */
+    
     .site-footer {
         padding: 50px 20px;
         margin-top: 40px;
