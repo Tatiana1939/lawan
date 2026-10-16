@@ -817,7 +817,6 @@ h1 {
         display: flex;
         align-items: center;
         flex-shrink: 0;
-        box-shadow: none;
     }
     
     .site-footer {
