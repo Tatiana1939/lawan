@@ -943,6 +943,48 @@ h1 {
     }
 
     /* --- Чат --- */
+    /* === Шапка чата === */
+    .messenger-header {
+        padding: 12px 14px;
+        flex-wrap: nowrap; /* Запрещаем перенос на вторую строку */
+        gap: 10px;
+    }
+
+    /* Аватарка не должна сжиматься */
+    .avatar {
+        flex-shrink: 0; /* Запрещаем сжатие */
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Блок с именем занимает всё свободное место */
+    .user-info {
+        flex: 1;
+        min-width: 0; /* Важно! Позволяет тексту обрезаться, а не вылезать */
+        overflow: hidden;
+    }
+    /* Имя и статус обрезаются с "…" если не влезают */
+    .user-name,
+    .user-status {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Троеточие — фиксированный размер, не сжимается */
+    .icon-dots {
+        flex-shrink: 0;
+        font-size: 18px;
+        letter-spacing: 1px;
+        padding: 0 4px;
+    }
+
+    /* Или если у вас иконка, а не текст: */
+    .header-actions {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+    }
     .messenger-mockup {
         max-width: 100%;
         border-radius: 12px;
