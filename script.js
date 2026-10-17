@@ -174,6 +174,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Колонка дня
             const col = document.createElement('div');
             col.className = 'week-day-column';
+            // Добавляем дату для мобильного вида (например "Сб 17")
+            col.setAttribute('data-date-label', `${dayNames[d.getDay()]} ${d.getDate()}`);
             col.onclick = (e) => {
                 if (e.target.closest('.task-btn')) return; // Игнорируем клики по кнопкам
                 openModal(dateKey, d);
