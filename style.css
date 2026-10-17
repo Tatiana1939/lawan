@@ -837,3 +837,180 @@ h1 {
     .message-bubble { font-size: 12px; }
     .icon-dots { font-size: 16px; }
 }
+
+/* ============================================ */
+/*              КАЛЕНДАРЬ                       */
+/* ============================================ */
+
+.calendar-page {
+    padding-top: 60px;
+}
+
+.calendar-subtitle {
+    font-size: 18px;
+    color: #6b7280;
+    margin-bottom: 40px;
+}
+
+.calendar-container {
+    width: 100%;
+    max-width: 800px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+    padding: 24px;
+    margin: 0 auto;
+}
+
+/* Шапка календаря */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 0 8px;
+}
+
+.calendar-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.cal-nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f3f4f6;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #4b5563;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.cal-nav-btn:hover {
+    background: #e5e7eb;
+    transform: scale(1.05);
+}
+
+/* Дни недели */
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.calendar-weekdays div {
+    font-size: 13px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    padding: 8px 0;
+}
+
+/* Сетка дней */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.cal-day {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #374151;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    border: 1px solid transparent;
+}
+
+.cal-day:hover {
+    background: #f3f4f6;
+}
+
+/* Пустые ячейки */
+.cal-day.empty {
+    cursor: default;
+    color: transparent;
+}
+
+.cal-day.empty:hover {
+    background: transparent;
+}
+
+/* Сегодняшний день */
+.cal-day.today {
+    background: #407bff;
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(64, 123, 255, 0.3);
+}
+
+.cal-day.today:hover {
+    background: #3266d9;
+}
+
+/* Выходные */
+.cal-day.weekend {
+    color: #ef4444;
+}
+
+/* ============================================ */
+/*      АДАПТИВ ДЛЯ КАЛЕНДАРЯ                   */
+/* ============================================ */
+
+@media (max-width: 768px) {
+    .calendar-page {
+        padding-top: 30px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .calendar-page h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .calendar-subtitle {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    .calendar-container {
+        padding: 12px;
+        border-radius: 16px;
+    }
+
+    .calendar-header {
+        margin-bottom: 16px;
+    }
+
+    .calendar-header h2 {
+        font-size: 18px;
+    }
+
+    .cal-nav-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .calendar-weekdays div {
+        font-size: 11px;
+        padding: 4px 0;
+    }
+
+    .cal-day {
+        font-size: 13px;
+        border-radius: 8px;
+    }
+}
