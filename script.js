@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const calendarView = document.getElementById('calendar-view');
 
     function switchView(targetId) {
-        const views = ['main-view', 'calendar-view'];
+        const views = ['main-view', 'calendar-view', 'tasks-view'];
         views.forEach(id => {
             const el = document.getElementById(id);
             if (el) el.style.display = (id === targetId) ? 'block' : 'none';
