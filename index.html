@@ -5,8 +5,8 @@
     <meta property="og:title" content="Можно мягче">
     <meta property="og:url" content="https://maybesofter.com/"> ссылкак на сам сайт
     <meta property="og:image" content="/images/og.jpg">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lawan - система для адвокатов</title> 
     <!-- Подключаем шрифт Inter -->
@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tasks.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
 </head>
 <body>
@@ -39,7 +40,7 @@
                     <li><a href="#">Продукты <svg class="arrow-down" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></a></li>
                     <li><a href="#">Реестр клиентов</a></li>
                     <li><a href="#">Файлы с делами</a></li>
-                    <li><a href="#">Задачи</a></li>
+                    <li><a href="#" id="nav-tasks">Задачи</a></li>
                     <li><a href="#" id="nav-calendar">Календарь</a></li>
                     <li><a href="#">"что-то еще"</a></li>
                 </ul>
@@ -315,6 +316,156 @@
             </div>
         </div>
     </div>
+
+    <!-- ============================================ -->
+    <!--            СТРАНИЦА ЗАДАЧ (КАНБАН)           -->
+    <!-- ============================================ -->
+    <div id="tasks-view" style="display: none;">
+
+        <!-- ПАНЕЛЬ ДОСОК (ПРОСТРАНСТВ) -->
+        <div class="boards-panel">
+            <div class="boards-tabs" id="boardsTabs">
+                <!-- Сюда JS будет рендерить вкладки досок, и в конце — кнопку "+" -->
+            </div>
+        </div>
+
+        <main class="hero tasks-page">
+
+            <!-- ТУЛБАР -->
+            <div class="tasks-toolbar">
+                <div class="toolbar-left">
+                    <!-- 1. Настройки доски -->
+                    <button class="toolbar-settings-btn" id="boardSettingsBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        Настройки
+                    </button>
+
+                    <!-- 2. МАРКЕРЫ (теперь слева) -->
+                    <div class="markers-area">
+                        <div class="marker-dropdown" id="dropdown-assignee">
+                            <button class="marker-trigger" data-marker="assignee">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                Исполнитель
+                            </button>
+                            <div class="marker-dropdown-menu">
+                                <div class="marker-drag-item" draggable="true" data-marker="assignee" data-value="А. Смирнов">👤 А. Смирнов</div>
+                                <div class="marker-drag-item" draggable="true" data-marker="assignee" data-value="И. Иванов">👤 И. Иванов</div>
+                            </div>
+                        </div>
+                        <div class="marker-dropdown" id="dropdown-deadline">
+                            <button class="marker-trigger" data-marker="deadline">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                Дедлайн
+                            </button>
+                            <div class="marker-dropdown-menu">
+                                <div class="marker-drag-item" draggable="true" data-marker="deadline" data-value="Сегодня">📅 Сегодня</div>
+                                <div class="marker-drag-item" draggable="true" data-marker="deadline" data-value="Завтра">📅 Завтра</div>
+                                <div class="marker-drag-item" draggable="true" data-marker="deadline" data-value="12 ноя">📅 12 ноя</div>
+                            </div>
+                        </div>
+                        <div class="marker-dropdown" id="dropdown-priority">
+                            <button class="marker-trigger" data-marker="priority">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                Приоритет
+                            </button>
+                            <div class="marker-dropdown-menu">
+                                <div class="marker-drag-item" draggable="true" data-marker="priority" data-value="high">🔴 Высокий</div>
+                                <div class="marker-drag-item" draggable="true" data-marker="priority" data-value="medium">🟡 Средний</div>
+                                <div class="marker-drag-item" draggable="true" data-marker="priority" data-value="low">🟢 Низкий</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Отображение (теперь справа) -->
+                <div class="toolbar-right">
+                    <div class="view-switcher-wrapper">
+                        <button class="toolbar-icon-btn active" data-view="board" title="В виде колонок">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="18" rx="1"></rect><rect x="14" y="3" width="7" height="18" rx="1"></rect></svg>
+                        </button>
+                        <button class="toolbar-icon-btn" data-view="calendar" title="В виде календаря">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        </button>
+                        <button class="toolbar-icon-btn" data-view="gantt" title="Диаграмма Ганта">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ОТОБРАЖЕНИЕ (Колонки) -->
+            <div id="boardViewContainer" class="board-view-container active">
+                <div class="kanban-board" id="kanbanBoard">
+                    <div class="kanban-column" data-status="todo">
+                        <div class="kanban-column-header">
+                            <div class="kanban-col-title"><span class="kanban-dot" style="background:#f59e0b"></span>Нужно сделать</div>
+                        </div>
+                        <button class="kanban-add-btn" data-status="todo">+ Добавить задачу</button>
+                        <div class="kanban-cards" data-status="todo"></div>
+                    </div>
+                    <div class="kanban-column" data-status="doing">
+                        <div class="kanban-column-header">
+                            <div class="kanban-col-title"><span class="kanban-dot" style="background:#8b5cf6"></span>В работе</div>
+                        </div>
+                        <button class="kanban-add-btn" data-status="doing">+ Добавить задачу</button>
+                        <div class="kanban-cards" data-status="doing"></div>
+                    </div>
+                    <div class="kanban-column" data-status="done">
+                        <div class="kanban-column-header">
+                            <div class="kanban-col-title"><span class="kanban-dot" style="background:#10b981"></span>Готово</div>
+                        </div>
+                        <button class="kanban-add-btn" data-status="done">+ Добавить задачу</button>
+                        <div class="kanban-cards" data-status="done"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ЗАГЛУШКИ -->
+            <div id="calendarViewContainer" class="board-view-container"><div class="view-placeholder">Календарь в разработке</div></div>
+            <div id="ganttViewContainer" class="board-view-container"><div class="view-placeholder">Гант в разработке</div></div>
+
+        </main>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: новая задача -->
+    <div class="modal-overlay" id="kanbanModal" style="display: none;">
+        <div class="modal-content">
+            <h3>Новая задача</h3>
+            <p class="modal-date">Опишите, что нужно сделать</p>
+            <input type="text" id="kanbanInput" placeholder="Например: Подготовить исковое заявление" maxlength="120">
+            <div class="modal-actions">
+                <button class="modal-btn modal-cancel" id="kanbanCancel">Отмена</button>
+                <button class="modal-btn modal-save" id="kanbanSave">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: новая подзадача -->
+    <div class="modal-overlay" id="subtaskModal" style="display: none;">
+        <div class="modal-content">
+            <h3>Новая подзадача</h3>
+            <p class="modal-date">Что нужно сделать в рамках этой задачи?</p>
+            <input type="text" id="subtaskInput" placeholder="Например: Собрать документы" maxlength="120">
+            <div class="modal-actions">
+                <button class="modal-btn modal-cancel" id="subtaskCancel">Отмена</button>
+                <button class="modal-btn modal-save" id="subtaskSave">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: новая доска -->
+    <div class="modal-overlay" id="boardModal" style="display: none;">
+        <div class="modal-content">
+            <h3>Новая доска</h3>
+            <p class="modal-date">Дайте название вашему пространству</p>
+            <input type="text" id="boardInput" placeholder="Например: Проект Альфа" maxlength="40">
+            <div class="modal-actions">
+                <button class="modal-btn modal-cancel" id="boardCancel">Отмена</button>
+                <button class="modal-btn modal-save" id="boardSave">Создать</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Подвал сайта -->
     <footer class="site-footer">
         <div class="footer-container">
@@ -352,5 +503,6 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script src="tasks.js"></script>
 </body>
 </html>
